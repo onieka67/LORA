@@ -3,6 +3,7 @@
 import sys, os
 import requests
 
+
 # Add path to pyRadioHeadiRF95 module
 sys.path.append(os.path.dirname(__file__) + "/home/pi/Desktop/pyRadioHeadRF95/")
 
@@ -30,14 +31,20 @@ while True:
     if rf95.available():
         print "Available"
         (msg, l) = rf95.recv()
-        print "Received: " + msg 
+        print "Received: " + msg + " (" + str(l) + ")" 
         
-        url = 'http://192.168.1.133/lora/new_data.php?id={}'.format(msg)
-        try:
-                response = requests.post(url, data=url, timeout=100)
-                print "Data Berhasil Dikirim ke database" 
-        except:
-                print "Data Gagal Dikirim ke database"
+        time.sleep(0.1)
+        #pecah pesan
+        a,b,c= msg.split(",")
+        print a
+        print b
+        print c
+        #url = 'http://192.168.1.133/lora2/new_data.php?id_kapal={}&longitude={}&latitude={}'.format(a,b,c)
+        #try:
+        #        response = requests.post(url, data=url, timeout=100)
+        #        print "Data Berhasil Dikirim ke database" 
+        #except:
+        #        print "Data Gagal Dikirim ke database"
         #msg2 = "Alive\0"
         #print "Sending message..."
         #rf95.send(msg2, len(msg2))

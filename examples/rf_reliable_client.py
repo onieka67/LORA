@@ -3,7 +3,7 @@
 import sys, os
 
 # Add path to pyRadioHeadRF95 module
-sys.path.append(os.path.dirname(__file__) + "/../")
+sys.path.append(os.path.dirname(__file__) + "/home/pi/Desktop/pyRadioHeadRF95/")
 
 import pyRadioHeadRF95 as radio
 import time
